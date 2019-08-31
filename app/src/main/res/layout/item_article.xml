@@ -11,11 +11,11 @@
         android:id="@+id/article_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
         android:paddingTop="@dimen/small_margin"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
         tools:text="TEST sdfs idnsidnsind sid" />
 
 
@@ -23,9 +23,9 @@
         android:id="@+id/article_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
         app:layout_constraintTop_toBottomOf="@+id/article_name"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
         tools:text="Some info about test b=isdnisdnis disn disnisi dnsidnsindi nsid nsid isn dinsidnsidnisndisndindi nsi ndisd" />
 
 
@@ -37,8 +37,8 @@
         android:layout_marginBottom="@dimen/small_margin"
         android:layout_weight="1"
         android:ellipsize="end"
-        android:singleLine="true"
         android:paddingBottom="@dimen/small_margin"
+        android:singleLine="true"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
         app:layout_constraintTop_toBottomOf="@+id/article_description"
         tools:text="John Doe multiple lines test sudushduh udusdssdi" />
@@ -47,11 +47,12 @@
         android:id="@+id/article_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/small_margin"
         android:layout_marginEnd="@dimen/small_margin"
+        android:paddingTop="@dimen/small_margin"
+        android:paddingBottom="@dimen/small_margin"
         app:layout_constraintBottom_toBottomOf="@+id/article_author"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/article_author"
+        app:layout_constraintTop_toBottomOf="@+id/article_author"
         tools:text="01/01/2019" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -59,13 +60,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.02"/>
+        app:layout_constraintGuide_percent="0.02" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_end"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95"/>
+        app:layout_constraintGuide_percent="0.95" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
