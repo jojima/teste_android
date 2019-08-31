@@ -34,14 +34,14 @@ abstract class BaseListActivity : AppCompatActivity() {
     }
 
     private fun setupEmptyState(title: Int, subtitle: Int) {
-        empty_state.empty_state_title.text = getString(title)
-        empty_state.empty_state_subtitle.text = getString(subtitle)
+        empty_state?.empty_state_title?.text = getString(title)
+        empty_state?.empty_state_subtitle?.text = getString(subtitle)
     }
 
     private fun setupErrorState(title: Int, subtitle: Int) {
-        error_state.error_state_title.text = getString(title)
-        error_state.error_state_subtitle.text = getString(subtitle)
-        error_state.error_state_retry.setOnClickListener {
+        error_state?.error_state_title?.text = getString(title)
+        error_state?.error_state_subtitle?.text = getString(subtitle)
+        error_state?.error_state_retry?.setOnClickListener {
             executeRetry()
         }
     }
@@ -90,23 +90,26 @@ abstract class BaseListActivity : AppCompatActivity() {
         } else {
             hideLoading()
         }
-        when (networkState) {
-            NetworkState.SUCCESS -> {
-                hide(empty_state)
-                hide(error_state)
-                show(mainList)
-            }
-            NetworkState.EMPTY -> {
-                hide(empty_state)
-                show(error_state)
-                hide(mainList)
-            }
-            NetworkState.ERROR -> {
-                hide(empty_state)
-                show(error_state)
-                hide(mainList)
-            }
-            else -> {
+        empty_state?.let {
+            when (networkState) {
+                NetworkState.SUCCESS -> {
+
+                    hide(empty_state)
+                    hide(error_state)
+                    show(mainList)
+                }
+                NetworkState.EMPTY -> {
+                    hide(empty_state)
+                    show(error_state)
+                    hide(mainList)
+                }
+                NetworkState.ERROR -> {
+                    hide(empty_state)
+                    show(error_state)
+                    hide(mainList)
+                }
+                else -> {
+                }
             }
         }
     }
