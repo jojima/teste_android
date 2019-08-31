@@ -34,7 +34,7 @@ class SourcesActivity : BaseListActivity(), SourcesListAdapter.SourceListAdapter
     override val mainList: View
         get() = sources_list
 
-    val sourcesViewModel: SourcesViewModel by inject()
+    private val sourcesViewModel: SourcesViewModel by inject()
 
     private var viewAdapter: SourcesListAdapter = SourcesListAdapter(this)
     private var viewManager: RecyclerView.LayoutManager = GridLayoutManager(this, 1)
