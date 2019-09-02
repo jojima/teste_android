@@ -1,7 +1,9 @@
 package dev.dextra.newsapp.api.model
 
+import androidx.annotation.NonNull
 import androidx.recyclerview.widget.DiffUtil
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 
 data class Article(
@@ -34,5 +36,19 @@ data class Article(
             }
 
         }
+    }
+    fun equals(obj: Article): Boolean {
+        return (this == obj)|| this.title == obj.title
+    }
+
+    val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Article>() {
+        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
+            return oldItem.url === newItem.url
+        }
+
+        override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
+            return oldItem == newItem
+        }
+
     }
 }
