@@ -35,7 +35,7 @@ class NewsDataSource internal constructor(
         compositeDisposable.add(
             repository.getEverything(source?.id).subscribe({ response ->
                 if (response.articles.isEmpty()) {
-                    networkState.postValue(NetworkState.ERROR)
+                    networkState.postValue(NetworkState.EMPTY)
                     Log.d(TAG, "Load failed")
                 } else {
                     networkState.postValue(NetworkState.SUCCESS)
@@ -60,7 +60,7 @@ class NewsDataSource internal constructor(
         compositeDisposable.add(
             repository.getEverything(source?.id, params.key).subscribe({ response ->
                 if (response.articles.isEmpty()) {
-                    networkState.postValue(NetworkState.ERROR)
+                    networkState.postValue(NetworkState.EMPTY)
                     Log.d(TAG, "Load failed")
                 } else {
                     networkState.postValue(NetworkState.SUCCESS)

@@ -8,5 +8,6 @@
     <string name="SCIENCE">Science</string>
     <string name="SPORTS">Sports</string>
     <string name="TECHNOLOGY">Technology</string>
+    <string name="UNKNOWN">Unknown</string>
 
 </resources>

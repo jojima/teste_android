@@ -64,7 +64,7 @@ class SourcesViewModelTest : BaseTest() {
     fun testSelectCountry() {
         TestSuite.mock(TestConstants.sourcesURL).body(object : ResponseHandler {
             override fun getResponse(request: Request, path: String): String {
-                return request.url().queryParameter("country")?.let {
+                return request.url.queryParameter("country")?.let {
                     JsonUtils.toJson(emptyResponse)
                 } ?: FileUtils.readJson(path.substring(1) + ".json")!!
             }
@@ -86,7 +86,7 @@ class SourcesViewModelTest : BaseTest() {
     fun testSelectCategory() {
         TestSuite.mock(TestConstants.sourcesURL).body(object : ResponseHandler {
             override fun getResponse(request: Request, path: String): String {
-                return request.url().queryParameter("category")?.let {
+                return request.url.queryParameter("category")?.let {
                     JsonUtils.toJson(emptyResponse)
                 } ?: FileUtils.readJson(path.substring(1) + ".json")!!
             }

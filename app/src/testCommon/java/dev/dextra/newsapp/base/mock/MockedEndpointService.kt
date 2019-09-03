@@ -5,11 +5,12 @@ import dev.dextra.newsapp.base.FileUtils
 import dev.dextra.newsapp.base.mock.endpoint.EndpointMock
 import dev.dextra.newsapp.base.repository.EndpointService
 import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import java.util.*
 
 class MockedEndpointService : EndpointService() {
 
-    private val JSON_MEDIA_TYPE = MediaType.parse("application/json")
+    private val JSON_MEDIA_TYPE = "application/json".toMediaTypeOrNull()
     private val mockedEndpoints = HashMap<String, EndpointMock>()
 
     //we override the get builder method and use an interceptor
@@ -27,7 +28,7 @@ class MockedEndpointService : EndpointService() {
             val request = chain.request()
             val path = getPath(request)
 
-            val endpoint = request.method().toUpperCase() + " " + path
+            val endpoint = request.method.toUpperCase() + " " + path
             var mock: EndpointMock? = mockedEndpoints[endpoint]
             if (mock == null) {
                 mock = mockedEndpoints[path]
@@ -41,9 +42,9 @@ class MockedEndpointService : EndpointService() {
     }
 
     private fun getPath(request: Request): String {
-        var path = request.url().encodedPath()
+        var path = request.url.encodedPath
         if ("/" == path) {
-            path = request.url().toString()
+            path = request.url.toString()
         }
         return path
     }
@@ -57,7 +58,7 @@ class MockedEndpointService : EndpointService() {
         }
         return mock.error?.let { error ->
             builder.code(mock.getCode())
-                .body(error.response().errorBody())
+                .body(error.response()?.errorBody())
                 .build()
         } ?: builder.code(mock.getCode())
             .body(ResponseBody.create(JSON_MEDIA_TYPE, mock.getResponse(chain.request())))
