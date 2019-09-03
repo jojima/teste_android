@@ -177,34 +177,6 @@ class NewsActivityInstrumentedTest : BaseInstrumentedTest() {
         TestSuite.clearEndpointMocks()
     }
 
-    @Test
-    fun testCategorySelectorWithStates() {
-        //dynamic mock, if any category besides ALL is selected, show a custom response
-        TestSuite.mock(TestConstants.sourcesURL).body(object : ResponseHandler {
-            override fun getResponse(request: Request, path: String): String {
-                val jsonData = FileUtils.readJson(path.substring(1) + ".json")!!
-                return request.url.queryParameter("category")?.let {
-                    if (it == Category.BUSINESS.name.toLowerCase()) JsonUtils.toJson(brazilResponse) else jsonData
-                } ?: jsonData
-            }
-        }).apply()
-
-        waitLoading()
-
-        //select the Business category
-        onView(withId(R.id.category_select)).perform(click())
-        onData(equalTo(Category.BUSINESS)).inRoot(RootMatchers.isPlatformPopup()).perform(click())
-
-        waitLoading()
-
-        //check if the Sources list is displayed with the correct item and the empty and error states are hidden
-        onView(withId(R.id.sources_list)).check(matches(isDisplayed()))
-        onView(withId(R.id.error_state)).check(matches(not(isDisplayed())))
-        onView(withId(R.id.empty_state)).check(matches(not(isDisplayed())))
-        onView(ViewMatchers.withChild(ViewMatchers.withText("Test Brazil"))).check(matches(isDisplayed()))
-
-    }
-
 
     @After
     fun clearTest() {
