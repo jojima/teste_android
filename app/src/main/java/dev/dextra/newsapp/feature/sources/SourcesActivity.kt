@@ -115,14 +115,12 @@ class SourcesActivity : BaseListActivity(), SourcesListAdapter.SourceListAdapter
 
     override fun setupPortrait() {
         setListColumns(1)
-        sources_filters.orientation = VERTICAL
         configureFilterLayoutParams(country_select_layout, MATCH_PARENT, 0f)
         configureFilterLayoutParams(category_select_layout, MATCH_PARENT, 0f)
     }
 
     override fun setupLandscape() {
         setListColumns(2)
-        sources_filters.orientation = HORIZONTAL
         configureFilterLayoutParams(country_select_layout, 0, 1f)
         configureFilterLayoutParams(category_select_layout, 0, 1f)
     }

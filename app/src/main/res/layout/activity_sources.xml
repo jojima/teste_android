@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".feature.sources.SourcesActivity"
     android:descendantFocusability="beforeDescendants"
-    android:focusableInTouchMode="true">
+    android:fitsSystemWindows="true"
+    android:focusableInTouchMode="true"
+    tools:context=".feature.sources.SourcesActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -26,25 +26,28 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:titleEnabled="false">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/sources_filters"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/small_margin"
                 android:background="@color/colorPrimaryDark"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/small_margin">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/country_select_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/country"
-                    android:labelFor="@id/country_select">
+                    android:labelFor="@id/country_select"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
                     <dev.dextra.newsapp.components.CustomAutoCompleteTextView
                         android:id="@+id/country_select"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        />
+                        android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -53,38 +56,43 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/category"
-                    android:labelFor="@id/category_select">
+                    android:labelFor="@id/category_select"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/country_select_layout">
+
                     <dev.dextra.newsapp.components.CustomAutoCompleteTextView
                         android:id="@+id/category_select"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        />
+                        android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        style="@style/ListStyle"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:id="@+id/sources_list"
-        tools:listitem="@layout/item_source"/>
+        style="@style/ListStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:listitem="@layout/item_source" />
 
-    <include layout="@layout/empty_state"
+    <include
+        layout="@layout/empty_state"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/toolbar_safe_distance"
-        tools:visibility="gone"/>
+        tools:visibility="gone" />
 
-    <include layout="@layout/error_state"
+    <include
+        layout="@layout/error_state"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/toolbar_safe_distance"
-        tools:visibility="gone"/>
+        tools:visibility="gone" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
