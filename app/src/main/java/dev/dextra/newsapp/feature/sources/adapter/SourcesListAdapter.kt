@@ -10,7 +10,7 @@ import dev.dextra.newsapp.R
 import dev.dextra.newsapp.api.model.Source
 import kotlinx.android.synthetic.main.item_source.view.*
 
-class SourcesListAdapter(val listener: SourceListAdapterItemListener) :
+class SourcesListAdapter(private val listener: SourceListAdapterItemListener) :
     RecyclerView.Adapter<SourcesListAdapter.SourcesListAdapterViewHolder>() {
 
     private val dataset: ArrayList<Source> = ArrayList()

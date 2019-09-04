@@ -2,7 +2,6 @@ package dev.dextra.newsapp
 
 import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.intent.Intents
@@ -30,7 +29,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.lang.RuntimeException
 
 @RunWith(AndroidJUnit4::class)
 class SourcesActivityInstrumentedTest : BaseInstrumentedTest() {
@@ -122,7 +120,7 @@ class SourcesActivityInstrumentedTest : BaseInstrumentedTest() {
         onView(withId(R.id.empty_state)).check(matches(not(isDisplayed())))
         onView(withId(R.id.sources_list)).check(matches(not(isDisplayed())))
 
-        //clear the mocks to use just the json files
+        //dev.dextra.newsapp.base.extensions.clear the mocks to use just the json files
         TestSuite.clearEndpointMocks()
 
         //retry in the error state

@@ -11,7 +11,7 @@ import org.koin.test.mock.declare
 
 object TestSuite : KoinTest{
 
-    var endpointService: MockedEndpointService? = null
+    private var endpointService: MockedEndpointService? = null
         private set
 
     fun mock(url: String): EndpointMock {

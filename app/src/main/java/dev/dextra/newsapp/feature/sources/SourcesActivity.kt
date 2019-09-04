@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.LinearLayout
-import android.widget.LinearLayout.HORIZONTAL
-import android.widget.LinearLayout.VERTICAL
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView

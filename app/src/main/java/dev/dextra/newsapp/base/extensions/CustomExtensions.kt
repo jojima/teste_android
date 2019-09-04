@@ -1,3 +1,5 @@
+package dev.dextra.newsapp.base.extensions
+
 import androidx.lifecycle.MutableLiveData
 
 //add all the values from the list to the LiveData
@@ -7,7 +9,7 @@ fun <T> MutableLiveData<ArrayList<T>>.addListValues(values: List<T>) {
     this.postValue(value)
 }
 
-//clear the LiveData
+//dev.dextra.newsapp.base.extensions.clear the LiveData
 fun <T> MutableLiveData<ArrayList<T>>.clear() {
     this.postValue(null)
 }

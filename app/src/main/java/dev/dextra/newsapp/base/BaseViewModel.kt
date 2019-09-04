@@ -11,7 +11,7 @@ abstract class BaseViewModel : ViewModel() {
         disposables.add(disposable)
     }
 
-    fun clearDisposables() {
+    private fun clearDisposables() {
         disposables.forEach {
             if (!it.isDisposed) {
                 it.dispose()

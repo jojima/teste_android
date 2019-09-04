@@ -9,7 +9,7 @@ object JsonUtils {
 
     private var gson: Gson? = null
 
-    fun getGson(): Gson {
+    private fun getGson(): Gson {
 
         return gson?:let {
             val gsonBuilder = GsonBuilder()

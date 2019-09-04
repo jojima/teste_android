@@ -8,7 +8,6 @@ import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
 import androidx.test.espresso.intent.Intents
@@ -20,7 +19,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import dev.dextra.newsapp.api.model.Source
 import dev.dextra.newsapp.api.model.SourceResponse
-import dev.dextra.newsapp.api.model.enums.Category
 import dev.dextra.newsapp.api.model.enums.Country
 import dev.dextra.newsapp.base.BaseInstrumentedTest
 import dev.dextra.newsapp.base.FileUtils
@@ -31,7 +29,6 @@ import dev.dextra.newsapp.feature.news.NewsActivity
 import dev.dextra.newsapp.feature.sources.SourcesActivity
 import dev.dextra.newsapp.utils.JsonUtils
 import kotlinx.android.synthetic.main.activity_news.*
-import kotlinx.android.synthetic.main.activity_sources.*
 import okhttp3.Request
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.CoreMatchers.not
@@ -173,7 +170,7 @@ class NewsActivityInstrumentedTest : BaseInstrumentedTest() {
         pressBack()
         waitLoading()
 
-        //clear the mocks to use just the json files
+        //dev.dextra.newsapp.base.extensions.clear the mocks to use just the json files
         TestSuite.clearEndpointMocks()
     }
 

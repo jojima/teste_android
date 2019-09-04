@@ -48,7 +48,7 @@ abstract class BaseListActivity : AppCompatActivity() {
 
     private var loadingDialog: Dialog? = null
 
-    fun showLoading(context: Context) {
+    private fun showLoading(context: Context) {
         if (loadingDialog == null) {
             initDialog()
         }
@@ -65,7 +65,7 @@ abstract class BaseListActivity : AppCompatActivity() {
         }
     }
 
-    fun hideLoading() {
+    private fun hideLoading() {
         loadingDialog?.dismiss()
     }
 
@@ -114,11 +114,11 @@ abstract class BaseListActivity : AppCompatActivity() {
         }
     }
 
-    fun show(view: View) {
+    private fun show(view: View) {
         view.visibility = VISIBLE
     }
 
-    fun hide(view: View) {
+    private fun hide(view: View) {
         view.visibility = GONE
     }
 

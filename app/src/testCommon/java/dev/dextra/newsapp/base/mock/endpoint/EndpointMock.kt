@@ -5,9 +5,9 @@ import okhttp3.Request
 import retrofit2.HttpException
 
 //this is the object which mocks an URL
-class EndpointMock(val url: String, val endpointService: MockedEndpointService?) {
-    protected var responseHandler: ResponseHandler? = null
-    protected var response: String? = null
+class EndpointMock(private val url: String, private val endpointService: MockedEndpointService?) {
+    private var responseHandler: ResponseHandler? = null
+    private var response: String? = null
     private var code = 200
     var error: HttpException? = null
         private set
@@ -60,6 +60,6 @@ class EndpointMock(val url: String, val endpointService: MockedEndpointService?)
     }
 
     companion object {
-        val FORCED_MOCK_EXCEPTION_CODE = 999
+        const val FORCED_MOCK_EXCEPTION_CODE = 999
     }
 }

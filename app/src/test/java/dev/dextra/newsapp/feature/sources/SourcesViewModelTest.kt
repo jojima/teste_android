@@ -21,7 +21,7 @@ class SourcesViewModelTest : BaseTest() {
 
     val emptyResponse = SourceResponse(ArrayList(), "ok")
 
-    lateinit var viewModel: SourcesViewModel
+    private lateinit var viewModel: SourcesViewModel
 
     @Before
     fun setupTest() {

@@ -2,7 +2,6 @@ package dev.dextra.newsapp.feature.news
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import dev.dextra.newsapp.api.model.Article
@@ -19,7 +18,6 @@ class NewsViewModel : BaseViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
     private val newsRepository: NewsRepository = NewsRepository(EndpointService())
-    var networkState = MutableLiveData<NetworkState>()
     val newsDataSourceFactory: NewsDataSourceFactory = NewsDataSourceFactory(compositeDisposable, newsRepository)
     var listLiveData: LiveData<PagedList<Article>>
     private val pageSize = 10

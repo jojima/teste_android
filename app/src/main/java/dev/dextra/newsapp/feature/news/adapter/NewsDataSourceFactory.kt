@@ -13,8 +13,8 @@ class NewsDataSourceFactory(
     private val compositeDisposable: CompositeDisposable,
     private val newsRepository: NewsRepository
 ) : DataSource.Factory<Int, Article>() {
-    var networkState = MutableLiveData<NetworkState>()
-    val newsDataSourceLiveData = MutableLiveData<NewsDataSource>()
+    private var networkState = MutableLiveData<NetworkState>()
+    private val newsDataSourceLiveData = MutableLiveData<NewsDataSource>()
     private var source: Source? = null
     val newsDataSource = NewsDataSource(newsRepository, compositeDisposable)
 

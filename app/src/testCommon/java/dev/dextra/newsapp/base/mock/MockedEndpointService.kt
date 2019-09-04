@@ -6,6 +6,7 @@ import dev.dextra.newsapp.base.mock.endpoint.EndpointMock
 import dev.dextra.newsapp.base.repository.EndpointService
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.ResponseBody.Companion.toResponseBody
 import java.util.*
 
 class MockedEndpointService : EndpointService() {
@@ -61,7 +62,7 @@ class MockedEndpointService : EndpointService() {
                 .body(error.response()?.errorBody())
                 .build()
         } ?: builder.code(mock.getCode())
-            .body(ResponseBody.create(JSON_MEDIA_TYPE, mock.getResponse(chain.request())))
+            .body(mock.getResponse(chain.request()).toResponseBody(JSON_MEDIA_TYPE))
             .build()
     }
 
@@ -71,7 +72,7 @@ class MockedEndpointService : EndpointService() {
 
         val content = FileUtils.readJson(endpoint.substring(1) + ".json") ?: return endpointNotMocked(endpoint)
         return builder.code(200)
-            .body(ResponseBody.create(JSON_MEDIA_TYPE, content))
+            .body(content.toResponseBody(JSON_MEDIA_TYPE))
             .build()
     }
 
