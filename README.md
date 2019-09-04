@@ -40,3 +40,13 @@ Para executar os testes instrumentados:
     ./gradlew connectedDebugAndroidTest
     
 Todos os dados dos testes estão mockados.
+
+## Desafios feitos:
+- [x] App funcionando (usando nova chave do News API)
+- [x] Usar MVVM para a parte de News (seguindo o padrão do projeto)
+- [x] Adicionar paginação na tela de notícias
+- [x] Concertar os testes espresso inclusos no projeto
+- [x] Adicionar teste para a parte de notícias (Apenas da activity de forma simplificada)
+- [ ] Adicionar testes para o ViewModel das notícias
+- [x] Otimizar layouts (linear -> constraint)
+- [x] Rodar Lint e remover parte do código não utilizado
